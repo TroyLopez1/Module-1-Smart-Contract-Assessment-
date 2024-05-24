@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract mycontract {
+    function testRequire(uint _a) public pure {
+        require(_a <= 20, "INPUT is greater than 20");
+    }
+    function testRevert(uint _a) public pure {
+        if (_a > 20) {
+            revert("INPUT is greater than 20");
+        }
+    }
+    function testAssert(uint _a) public pure{
+        assert(_a == 20);
+    }
+}
