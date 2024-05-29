@@ -1,16 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract mycontract {
-    function testRequire(uint _a) public pure {
-        require(_a <= 20, "INPUT is greater than 20");
+contract SmartContract{
+    function validateInput(uint256 inputValue) public pure {
+        require(inputValue < 100, "Input exceeds the maximum allowed value of 99");
     }
-    function testRevert(uint _a) public pure {
-        if (_a > 20) {
-            revert("INPUT is greater than 20");
+    function checkValue(uint256 value) public pure {
+        if (value >= 100) {
+            revert("Value is out of the permitted range (must be less than 100)");
         }
     }
-    function testAssert(uint _a) public pure{
-        assert(_a == 20);
+    function ensureSpecificValue(uint256 number) public pure {
+        assert(number == 50);
+    }
+    function customRequireCheck(uint256 amount) public pure {
+        bool AmountValid = amount < 100;
+        if (AmountValid) {
+            require(false, "Amount is too high (must be less than 100)");
+        }
+    }
+    function customAssertCheck(uint256 inputValue) public pure {
+        bool InputFifty = (inputValue == 50);
+        assert(InputFifty);
     }
 }
